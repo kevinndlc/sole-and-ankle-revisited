@@ -108,6 +108,4 @@ const NavLink = styled.a`
   }
 `;
 
-const MobileMenuIcons = styled.div``;
-
 export default Header;

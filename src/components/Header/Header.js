@@ -6,6 +6,7 @@ import Logo from '../Logo';
 import SuperHeader from '../SuperHeader';
 import MobileMenu from '../MobileMenu';
 import Icon from '../Icon';
+import UnstyledButton from '../UnstyledButton';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -32,15 +33,15 @@ const Header = () => {
         </Nav>
         <Side>
           <IconButtonsWrapper>
-            <IconButton>
+            <UnstyledButton>
               <Icon id="shopping-bag" size={24} />
-            </IconButton>
-            <IconButton>
+            </UnstyledButton>
+            <UnstyledButton>
               <Icon id="search" size={24} />
-            </IconButton>
-            <IconButton onClick={() => setShowMobileMenu(true)}>
+            </UnstyledButton>
+            <UnstyledButton onClick={() => setShowMobileMenu(!showMobileMenu)}>
               <Icon id="menu" size={24} />
-            </IconButton>
+            </UnstyledButton>
           </IconButtonsWrapper>
         </Side>
       </MainHeader>
@@ -78,6 +79,10 @@ const Nav = styled.nav`
 
 const Side = styled.div`
   flex: 1;
+
+  @media (max-width: ${BREAKPOINTS.tablet}) {
+    flex: 0;
+  }
 `;
 
 const IconButtonsWrapper = styled.div`
@@ -85,16 +90,9 @@ const IconButtonsWrapper = styled.div`
 
   @media (max-width: ${BREAKPOINTS.tablet}) {
     display: flex;
-    justify-content: flex-end;
     gap: clamp(1rem, 6vw - 1rem, 2rem);
   }
 `;
-
-const IconButton = styled.button`
-  background: transparent;
-  border: none;
-  padding: 0;
-`
 
 const NavLink = styled.a`
   font-size: 1.125rem;
